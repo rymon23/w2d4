@@ -86,15 +86,29 @@ def largest_contiguous_subsum(list)
   largest #O(1)
 end
 
-list = [2, 3, -6, 7, -6, 7]
-p largest_contiguous_subsum(list) # => 8
+# list = [2, 3, -6, 7, -6, 7]
+# p largest_contiguous_subsum(list) # => 8
 
-list = [-5, -1, -3]
-p largest_contiguous_subsum(list) # => -1 (from [-1])
+# list = [-5, -1, -3]
+# p largest_contiguous_subsum(list) # => -1 (from [-1])
+
+
+# def first_anagram?(str1, str2)
+#   hash = Hash.new(0)
+#   hash2 = Hash.new(0)
+#   str1.each_char {|char| hash[char] += 1}
+#   str2.each_char {|char| hash2[char] += 1}
+#   hash == hash2
+# end
 
 
 def first_anagram?(str1, str2)
-  hash = Hash.new(0)
-  hash2 = Hash.new(0)
-  
+  str1.split("").permutation.to_a.map do |arr|
+    arr.join
+  end.include?(str2)
 end
+
+
+p first_anagram?("gizmobdfhksqrsgq", "sally")    #=> false
+puts
+p first_anagram?("elvis", "lives")    #=> true
